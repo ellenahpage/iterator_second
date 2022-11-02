@@ -1,0 +1,47 @@
+#from path_check import Start_date, End_date, Client_code
+
+"""list containing generic files to be expected within final file (taken from 3321 EMIR),
+intend to map this list against generated list comtaining final file content for each client.
+Intend to flag if there is an unexpected file/format within each client to build the rules around"""
+
+
+FINAL_FILE_CONTENT = [
+    r'\d{4}\w?_\d{4}\w?_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Compression Testing Incidents.csv',
+    r'\d{4}\w?_\d{4}\w?_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Validation Errors Data.csv',
+    r'\d{4}\w?_\d{4}\w?_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Paired Trades with Mismatching Values.csv',
+    r'\d{4}\w?_\d{4}\w?_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Records with differing trade economics since previous test cycle.csv',
+    r'\d{4}\w?_\d{4}\w?_Removed from Test Population_\w{2}_\d{4}-\d{2}-\d{2} to \d{2}-\d{2}_Consolidated Queries Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Removed from Test Population_\w{2}_\d{4}-\d{2}-\d{2} to \d{2}-\d{2}_Queries Summary.csv',
+    #r'\d{4}\w?_\d{4}\w?_Test Population (C)_{Historic_start_end_date}_Historic Errors Summary.xlsx',
+    #r'\d{4}\w?_\d{4}\w?_Test Population (C)_{Historic_start_end_date}_Historic Queries Summary.xlsx',
+    r'\d{4}\w?_\d{4}\w?_Test Population (C)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Errors Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (C)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Queries Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (C)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Errors Summary.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (C)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Queries Summary.csv',
+    #r'\d{4}\w?_\d{4}\w?_Test Population (DR)_{Historic_start_end_date}_Historic Errors Summary.xlsx',
+    #r'\d{4}\w?_\d{4}\w?_Test Population (DR)_{Historic_start_end_date}_Historic Queries Summary.xlsx',
+    r'\d{4}\w?_\d{4}\w?_Test Population (DR)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Errors Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (DR)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Queries Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (DR)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Errors Summary.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (DR)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Queries Summary.csv',
+    #r'\d{4}\w?_\d{4}\w?_Test Population (G)_{Historic_start_end_date}_Historic Errors Summary.xlsx',
+    #r'\d{4}\w?_\d{4}\w?_Test Population (G)_{Historic_start_end_date}_Historic Queries Summary.xlsx',
+    r'\d{4}\w?_\d{4}\w?_Test Population (G)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Errors Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (G)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Consolidated Queries Data_1 OF 1.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (G)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Errors Summary.csv',
+    r'\d{4}\w?_\d{4}\w?_Test Population (G)_\w{2}_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_Queries Summary.csv',
+    r'\d{4}\w?_\d{4}\w?_KR_\d{8}_\d{4}.zip',
+    r'\d{4}\w?_MI_Test Period \d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}.xlsx',
+    r'\d{4}\w?_MI_Test Period \d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_FORMATTED.xlsx',
+    r'\d{4}\w?_MI_Test Period \d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}_FORMATTED_DASHBOARD.xlsx',
+    r'\d{4}\w?_ReportShield \w{3}w? Accuracy Testing Report_\d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}.pdf',
+    'P.txt',
+    '_REPORT AUTOMATION LOG FILES',
+    '_TABLES FOR REPORT'
+]
+
+
+
+
+
+
