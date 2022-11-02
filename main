@@ -1,0 +1,58 @@
+import os
+import signal
+import csv
+import re
+from static import FINAL_FILE_CONTENT
+
+jurisdiction_list = ["EMIR", "ASIC", "DFA", "SFTR"]
+report_types = ["\\PR\\", "\\AR\\"]
+report_name = "\\ReportShield\\"
+location = r'Y:/'
+final_folder = "_FINAL"
+FILE_CONTENT = ["{Client_code}_1.xlsx", "{Client_code}_2.xlsx","{Client_code}_3.xlsx"]
+#static_folder = FINAL_FILE_CONTENT
+
+
+def client_code_getter(dir):
+    path_split_tmp = dir.split("\\")
+    path_split = path_split_tmp[0].split("/")
+    Client_code = path_split[1]
+    return Client_code
+
+
+def date_getter(loc):
+    path_split_tmp = loc.split("\\")
+    date_range = path_split_tmp[5]
+    start_date = date_range.split(" ")[0]
+    end_date = date_range.split(" ")[2]
+    return start_date, end_date
+    
+    
+def list_files():
+    i = 0
+    paths = []
+    folder_content_total = []
+    for directory_path, sub_directories, files in os.walk(location):
+        if os.path.basename(directory_path) == final_folder and any(jurisdiction in directory_path for jurisdiction in jurisdiction_list) \
+        and any(report_type in directory_path for report_type in report_types) and report_name in directory_path:
+            unexpected_folder_content = []
+            Client_code = client_code_getter(directory_path)
+            Start_date = date_getter(directory_path)[0]
+            End_date = date_getter(directory_path)[1]
+            for file in files:
+                if any(re.match(item, file) for item in FINAL_FILE_CONTENT):
+                    unexpected_folder_content.append(file)
+                    paths.append(directory_path)
+            print(f"unexpected files for {Client_code}: {unexpected_folder_content} in path {directory_path}")
+            i += 1
+            if i > 50:
+                print("FINISHED!")
+                return unexpected_folder_content
+
+
+unexpected_folder_content = list_files()
+save_location = r'D:/Users/Ellenah.Page/Documents/Code/dir_list.csv'
+with open(save_location, 'w') as myfile:
+    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+    for i in unexpected_folder_content:
+        wr.writerow(unexpected_folder_content)
